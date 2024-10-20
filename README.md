@@ -1,66 +1,74 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## About Laravel User Registration with Two-Step Email Notification
+This project demonstrates a user registration system implemented in Laravel that includes a two-step verification process using email notifications. The main features of the project are:  
+User Registration: Users can register by providing their email address. This triggers the first step of the registration process.
+Email Notification: Upon registration, an email is sent to the user with a verification link or instructions to complete the registration.
+Token Validation: The system validates the token sent in the email to ensure the authenticity of the user.
+User Information Update: After email verification, users can update their registration details, such as name, phone number, and a custom message.
+Middleware Protection: The update route is protected by middleware to ensure that only users with a valid token can access it.
+This project serves as a tutorial for implementing a secure and user-friendly registration process in Laravel applications.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## More info at
+https://medium.com/@murilolivorato/mastering-polymorphic-relationships-in-laravel-a-comprehensive-guide-ff3bc3ef2b64
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Postman collection
+```
+{
+"info": {
+"name": "User Registration API",
+"_postman_id": "unique-id",
+"description": "Collection for User Registration API",
+"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+},
+"item": [
+{
+"name": "Register User",
+"request": {
+"method": "POST",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  \"email\": \"user@example.com\"\n}"
+},
+"url": {
+"raw": "{{base_url}}/register",
+"host": ["{{base_url}}"],
+"path": ["register"]
+}
+}
+},
+{
+"name": "Update User Registration",
+"request": {
+"method": "PUT",
+"header": [
+{
+"key": "Content-Type",
+"value": "application/json"
+},
+{
+"key": "Authorization",
+"value": "Bearer {{token}}"
+}
+],
+"body": {
+"mode": "raw",
+"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"1234567890\",\n  \"message\": \"This is a test message.\"\n}"
+},
+"url": {
+"raw": "{{base_url}}/register",
+"host": ["{{base_url}}"],
+"path": ["register"]
+}
+}
+}
+]
+}
+```

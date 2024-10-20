@@ -13,14 +13,18 @@ return new class extends Migration
     {
         Schema::create('user_registrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->dateTime('valid_token')->nullable();
             $table->string('token')->nullable();
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('email');
             $table->string('phone')->nullable();
             $table->text('message')->nullable();
             $table->enum('status', UserRegistrationStatusEnum::optionList())->default(UserRegistrationStatusEnum::START->value);
+            $table->string('street')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('postal_code')->nullable();
+            $table->string('country')->nullable();
             $table->timestamps();
         });
     }
@@ -30,9 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::create('contratos', function (Blueprint $table) {
-            $table->dropForeign('user_id_foreign');
-        });
         Schema::dropIfExists('user_registrations');
     }
 };

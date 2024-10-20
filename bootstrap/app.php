@@ -13,7 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        $middleware->alias(['validate.token.user.registration', ValidateTokenUserRegistration::class]);
+        $middleware->use([ValidateTokenUserRegistration::class]
+        );
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

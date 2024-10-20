@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Enums\UserRegistrationStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
@@ -16,11 +17,15 @@ class UserRegistration extends Model
         'phone',
         'message',
         'status',
-        'user_id',
+        'street',
+        'city',
+        'state',
+        'postal_code',
+        'country',
     ];
 
     protected $casts = [
-        'status' => UserRegistration::class
+        'status' => UserRegistrationStatusEnum::class
     ];
     public function User(){
         return $this->belongsTo(User::class ,'user_id' );
