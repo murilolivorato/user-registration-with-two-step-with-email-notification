@@ -1,17 +1,15 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 
-## About Laravel User Registration with Two-Step Email Notification
-This project demonstrates a user registration system implemented in Laravel that includes a two-step verification process using email notifications. The main features of the project are:  
-User Registration: Users can register by providing their email address. This triggers the first step of the registration process.
-Email Notification: Upon registration, an email is sent to the user with a verification link or instructions to complete the registration.
-Token Validation: The system validates the token sent in the email to ensure the authenticity of the user.
-User Information Update: After email verification, users can update their registration details, such as name, phone number, and a custom message.
-Middleware Protection: The update route is protected by middleware to ensure that only users with a valid token can access it.
-This project serves as a tutorial for implementing a secure and user-friendly registration process in Laravel applications.
+## Building Custom User Registration Flow in Laravel Using Middleware to secure the registration process.
+User registration is a fundamental part of most web applications, and there are many different ways to handle it — especially when it comes to verifying user emails. In Laravel, you could use built-in features like the MustVerifyEmail interface to simplify email verification. However, I’m going to show custom approach that gives more flexibility and control.
+
+I’ll show you how to use Laravel middleware to secure the registration process by restricting access to key parts of the application until users have verified their email addresses. Along with that, I’ll use Laravel’s Notifiable class to send a custom verification email to users, allowing them to complete their registration only after clicking a link sent to their inbox.
+
+
 
 ## More info at
-https://medium.com/@murilolivorato/mastering-polymorphic-relationships-in-laravel-a-comprehensive-guide-ff3bc3ef2b64
+https://medium.com/@murilolivorato/building-custom-user-registration-flow-in-laravel-using-middleware-to-secure-the-registration-07423bdcf129
 
 ## Postman collection
 ```

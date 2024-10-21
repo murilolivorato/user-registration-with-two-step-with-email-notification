@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_registrations', function (Blueprint $table) {
             $table->id();
             $table->dateTime('valid_token')->nullable();
-            $table->string('token')->nullable();
+            $table->string('token')->unique();
             $table->string('name');
             $table->string('email');
             $table->string('phone')->nullable();

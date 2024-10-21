@@ -26,7 +26,6 @@ class UserRegistrationController extends ApiController
             $userRegistration->save();
 
             DB::afterCommit(function () use ($request, $userRegistration)  {
-                //event(new EmailSent($request->email));
                 $userRegistration->notify(new EmailUserRegistration($userRegistration));
                 $userRegistration->update(['status' => UserRegistrationStatusEnum::EMAIL_SENT]);
             });
