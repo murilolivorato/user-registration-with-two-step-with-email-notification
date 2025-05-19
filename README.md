@@ -1,72 +1,102 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Building Custom User Registration Flow in Laravel
 
-
-## Building Custom User Registration Flow in Laravel Using Middleware to secure the registration process.
-User registration is a fundamental part of most web applications, and there are many different ways to handle it — especially when it comes to verifying user emails. In Laravel, you could use built-in features like the MustVerifyEmail interface to simplify email verification. However, I’m going to show custom approach that gives more flexibility and control.
-
-I’ll show you how to use Laravel middleware to secure the registration process by restricting access to key parts of the application until users have verified their email addresses. Along with that, I’ll use Laravel’s Notifiable class to send a custom verification email to users, allowing them to complete their registration only after clicking a link sent to their inbox.
+A comprehensive guide and implementation of a secure user registration system in Laravel using middleware and custom email verification.
 
 
 
-## More info at
-https://medium.com/@murilolivorato/building-custom-user-registration-flow-in-laravel-using-middleware-to-secure-the-registration-07423bdcf129
+<p align="center">
+<img src="https://miro.medium.com/v2/resize:fit:700/1*VePsYwjvm9aAaDa07od94g.png" alt="Login Page" />
+</p>
 
-## Postman collection
+
+## Overview
+
+This project demonstrates how to implement a custom user registration flow in Laravel that:
+- Secures the registration process using middleware
+- Implements custom email verification
+- Manages user registration status
+- Handles token-based verification
+- Provides a flexible and secure registration system
+
+## Features
+
+- Custom email verification system
+- Token-based registration flow
+- Middleware protection for registration routes
+- Status tracking for registration process
+- Configurable token expiration
+- Comprehensive user information collection
+- Transaction-safe database operations
+
+## Prerequisites
+
+- PHP 8.1 or higher
+- Composer
+- Laravel 10.x
+- MySQL or another database system
+- Mail server configuration
+
+## Installation
+
+1. Clone the repository:
+```bash
+git clone <your-repository-url>
+cd <your-project-directory>
 ```
-{
-"info": {
-"name": "User Registration API",
-"_postman_id": "unique-id",
-"description": "Collection for User Registration API",
-"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-},
-"item": [
-{
-"name": "Register User",
-"request": {
-"method": "POST",
-"header": [
-{
-"key": "Content-Type",
-"value": "application/json"
-}
-],
-"body": {
-"mode": "raw",
-"raw": "{\n  \"email\": \"user@example.com\"\n}"
-},
-"url": {
-"raw": "{{base_url}}/register",
-"host": ["{{base_url}}"],
-"path": ["register"]
-}
-}
-},
-{
-"name": "Update User Registration",
-"request": {
-"method": "PUT",
-"header": [
-{
-"key": "Content-Type",
-"value": "application/json"
-},
-{
-"key": "Authorization",
-"value": "Bearer {{token}}"
-}
-],
-"body": {
-"mode": "raw",
-"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"1234567890\",\n  \"message\": \"This is a test message.\"\n}"
-},
-"url": {
-"raw": "{{base_url}}/register",
-"host": ["{{base_url}}"],
-"path": ["register"]
-}
-}
-}
-]
-}
+
+2. Install dependencies:
+```bash
+composer install
 ```
+
+3. Configure your environment:
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Configure your mail settings in `.env`:
+```env
+MAIL_MAILER=smtp
+MAIL_HOST=your-smtp-host
+MAIL_PORT=587
+MAIL_USERNAME=your-username
+MAIL_PASSWORD=your-password
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=your-email@example.com
+MAIL_FROM_NAME="${APP_NAME}"
+```
+
+5. Run migrations:
+```bash
+php artisan migrate
+```
+
+## 👥 Author
+
+For questions, suggestions, or collaboration:
+- **Author**: Murilo Livorato
+- **GitHub**: [murilolivorato](https://github.com/murilolivorato)
+- **linkedIn**: https://www.linkedin.com/in/murilo-livorato-80985a4a/
+
+## 📸 Screenshots
+
+<p align="center">
+  <strong>Receiving E-mail Confirmation</strong><br><br>
+  <img src="https://miro.medium.com/v2/resize:fit:700/1*o5bk_DGsP99s0yfD6HT-JQ.png" alt="Laravel on Google Cloud Run" width="600"/><br>
+</p>
+
+<p align="center">
+  <strong>Postman</strong><br><br>
+  <img src="https://miro.medium.com/v2/resize:fit:700/1*FYR_oDkSFmTRbEjIFUhkMg.png" alt="Laravel on Google Cloud Run" width="600"/><br>
+</p>
+
+
+<div align="center">
+  <h3>⭐ Star This Repository ⭐</h3>
+  <p>Your support helps us improve and maintain this project!</p>
+  <a href="https://github.com/murilolivorato/user-registration-with-two-step-with-email-notification/stargazers">
+    <img src="https://img.shields.io/github/stars/murilolivorato/user-registration-with-two-step-with-email-notification?style=social" alt="GitHub Stars">
+  </a>
+</div>
+
